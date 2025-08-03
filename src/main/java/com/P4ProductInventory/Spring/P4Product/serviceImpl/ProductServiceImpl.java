@@ -6,6 +6,8 @@ import com.P4ProductInventory.Spring.P4Product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -18,5 +20,11 @@ public class ProductServiceImpl implements ProductService {
 
         Product saveProduct = productRepository.save(product);
         return "Product Details saved";
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        List<Product> allProduct = productRepository.findAll();
+        return allProduct;
     }
 }
