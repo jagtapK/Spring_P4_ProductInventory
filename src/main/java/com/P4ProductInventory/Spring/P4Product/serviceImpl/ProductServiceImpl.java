@@ -27,4 +27,11 @@ public class ProductServiceImpl implements ProductService {
         List<Product> allProduct = productRepository.findAll();
         return allProduct;
     }
+
+    @Override
+    public Product getProductById(int id) {
+        Product ProductById = productRepository.findById(id).orElseThrow(()
+        -> new NullPointerException("Product id is not found"+id));
+        return ProductById;
+    }
 }

@@ -17,7 +17,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/addProduct")
-    public ResponseEntity<String> addProduct(@RequestBody List<Product> product){
+    public ResponseEntity<String> addProduct(@RequestBody List<Product> product) {
 
         product.forEach(product1 -> {
             System.err.println(product1);
@@ -28,9 +28,18 @@ public class ProductController {
     }
 
     @GetMapping("/GetAllProduct")
-    public ResponseEntity<List<Product>> getAllProduct(){
+    public ResponseEntity<List<Product>> getAllProduct() {
         List<Product> ProductList = productService.getAllProducts();
-        return new ResponseEntity<>(ProductList,HttpStatus.OK);
+        return new ResponseEntity<>(ProductList, HttpStatus.OK);
     }
 
+    @GetMapping("/getById")
+    public ResponseEntity<Product> getEmployeeById(@PathVariable int id) {
+        Product product = productService.getProductById(id);
+        if (product != null) {
+            return ResponseEntity.ok(product);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
