@@ -4,6 +4,7 @@ import com.P4ProductInventory.Spring.P4Product.entity.Product;
 import com.P4ProductInventory.Spring.P4Product.repository.ProductRepository;
 import com.P4ProductInventory.Spring.P4Product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +40,19 @@ public class ProductServiceImpl implements ProductService {
     public String deletedById(int id) {
         productRepository.deleteById(id);
         return "Product Data Deleted";
+    }
+
+    @Override
+    public Product UpdateById(int id, Product newDetails) {
+        Product product = productRepository.findById(id).orElseThrow(()
+                ->new NullPointerException("Id is not found"+id));
+
+        product.setpName(newDetails.getpName());
+        product.setManufacturer(newDetails.getManufacturer());
+        product.setPrice(newDetails.getPrice());
+        product.setQuantity(newDetails.getQuantity());
+
+        Product p = productRepository.save(product);
+        return p;
     }
 }

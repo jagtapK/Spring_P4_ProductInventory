@@ -43,9 +43,15 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/DeleteById")
-    public ResponseEntity<String> DeleteById(int id) {
+    @GetMapping("/DeleteById/{id}")
+    public ResponseEntity<String> DeleteById(@PathVariable int id) {
         String product = productService.deletedById(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PutMapping("/UpdateById/{id}")
+    public ResponseEntity<Product> updateById(@PathVariable int id,@RequestBody Product product){
+       Product product1 =  productService.UpdateById(id,product);
+       return new ResponseEntity<>(product1,HttpStatus.OK);
     }
 }
