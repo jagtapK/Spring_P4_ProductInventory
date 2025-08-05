@@ -13,5 +13,8 @@ public interface ProductService{
 
     public Product getProductById(int id);
 
+    public String deletedById(int id);
+
+
 
 }

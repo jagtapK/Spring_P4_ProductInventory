@@ -34,4 +34,10 @@ public class ProductServiceImpl implements ProductService {
         -> new NullPointerException("Product id is not found"+id));
         return ProductById;
     }
+
+    @Override
+    public String deletedById(int id) {
+        productRepository.deleteById(id);
+        return "Product Data Deleted";
+    }
 }

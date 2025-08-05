@@ -42,4 +42,10 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/DeleteById")
+    public ResponseEntity<String> DeleteById(int id) {
+        String product = productService.deletedById(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
 }
