@@ -51,7 +51,7 @@ public class ProductController {
 
     @PutMapping("/UpdateById/{id}")
     public ResponseEntity<Product> updateById(@PathVariable int id,@RequestBody Product product){
-       Product product1 =  productService.UpdateById(id,product);
-       return new ResponseEntity<>(product1,HttpStatus.OK);
+        Product product1 =  productService.UpdateById(id,product);
+        return new ResponseEntity<>(product1,HttpStatus.OK);
     }
 }
