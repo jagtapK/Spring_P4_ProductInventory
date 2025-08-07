@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(int id) {
         Product ProductById = productRepository.findById(id).orElseThrow(()
-        -> new NullPointerException("Product id is not found"+id));
+                -> new NullPointerException("Product id is not found" + id));
         return ProductById;
     }
 
@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product UpdateById(int id, Product newDetails) {
         Product product = productRepository.findById(id).orElseThrow(()
-                ->new NullPointerException("Id is not found"+id));
+                -> new NullPointerException("Id is not found" + id));
 
         product.setpName(newDetails.getpName());
         product.setManufacturer(newDetails.getManufacturer());

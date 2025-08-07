@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ProductService{
+public interface ProductService {
 
     public String saveProduct(Product product);
 
